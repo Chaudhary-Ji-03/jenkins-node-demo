@@ -62,7 +62,7 @@ pipeline {
         stage('Deploy') {
 
             when {
-                branch 'master'
+                branch 'main'
             }
 
             steps {
@@ -122,7 +122,7 @@ pipeline {
         stage('Smoke Test') {
 
             when {
-                branch 'master'
+                branch 'main'
             }
 
             steps {
