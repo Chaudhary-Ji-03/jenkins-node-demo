@@ -149,10 +149,29 @@
 // }
 
 
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('Test') {
+//             steps {
+//                 echo 'Hello Jenkins'
+//             }
+//         }
+//     }
+// }
+
+
 pipeline {
+
     agent any
 
+    tools {
+        nodejs 'NodeJS-26'
+    }
+
     stages {
+
         stage('Test') {
             steps {
                 echo 'Hello Jenkins'
