@@ -1,9 +1,10 @@
+```groovy
 pipeline {
 
     agent any
 
-    tools {
-        nodejs 'NodeJS-26'
+    environment {
+        PATH = "/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS-26/bin:${env.PATH}"
     }
 
     options {
@@ -17,6 +18,13 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Node Version') {
+            steps {
+                sh 'node --version'
+                sh 'npm --version'
             }
         }
 
@@ -147,3 +155,4 @@ pipeline {
         }
     }
 }
+```
