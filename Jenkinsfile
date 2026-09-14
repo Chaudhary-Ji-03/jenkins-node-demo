@@ -9,11 +9,14 @@ pipeline {
         }
 
         stage('Node Version') {
-            steps {
-                sh 'node --version'
-                sh 'npm --version'
-            }
-        }
+    steps {
+        sh '''
+            export PATH="/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS-26/bin:$PATH"
+            node --version
+            npm --version
+        '''
+    }
+}
 
         stage('Install Dependencies') {
             steps {
