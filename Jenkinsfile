@@ -1,11 +1,8 @@
-```groovy
 pipeline {
 
     agent any
 
-    environment {
-        PATH = "/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS-26/bin:${env.PATH}"
-    }
+    environment { PATH = "/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS-26/bin:${env.PATH}" }
 
     options {
         skipDefaultCheckout(true)
@@ -18,13 +15,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-            }
-        }
-
-        stage('Node Version') {
-            steps {
-                sh 'node --version'
-                sh 'npm --version'
             }
         }
 
@@ -72,7 +62,7 @@ pipeline {
         stage('Deploy') {
 
             when {
-                branch 'main'
+                branch 'master'
             }
 
             steps {
@@ -132,7 +122,7 @@ pipeline {
         stage('Smoke Test') {
 
             when {
-                branch 'main'
+                branch 'master'
             }
 
             steps {
@@ -155,4 +145,3 @@ pipeline {
         }
     }
 }
-```
